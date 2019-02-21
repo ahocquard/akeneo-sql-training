@@ -2,9 +2,11 @@ default:
     suites:
         default:
             contexts:
-                - FeatureContext
+                - FeatureContext:
+                      fetchResultsFromRequest: '@App\FetchResultsFromRequest'
     extensions:
         Behat\Symfony2Extension:
             kernel:
+                env: test
                 bootstrap: features/bootstrap/bootstrap.php
                 class: App\Kernel
