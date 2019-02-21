@@ -5,6 +5,15 @@
     "behat/gherkin": {
         "version": "v4.6.0"
     },
+    "behat/symfony2-extension": {
+        "version": "2.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.1",
+            "ref": "ff944fc5f8dc1d1c9602968c2c12646c557adbbc"
+        }
+    },
     "behat/transliterator": {
         "version": "v1.2.0"
     },
