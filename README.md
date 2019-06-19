@@ -5,7 +5,7 @@
 Start the containers:
 ```
 export $(cat .env)
-docker-composer up -d
+docker-compose up -d
 ```
 
 The Mysql container has already an icecat catalog loaded.

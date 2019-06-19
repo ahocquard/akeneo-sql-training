@@ -16,8 +16,8 @@ final class FetchResultsFromRequest
         $this->connection = $connection;
     }
 
-    public function fetch(string $sql)
+    public function fetch(string $sql): array
     {
-        $this->connection->executeQuery($sql)->fetchAll();
+        return $this->connection->executeQuery($sql)->fetchAll();
     }
 }
