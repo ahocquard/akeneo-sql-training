@@ -6,6 +6,7 @@ Start the containers:
 ```
 export $(cat .env)
 docker-compose up -d
+docker-compose run php composer install
 ```
 
 The Mysql container has already an icecat catalog loaded.
@@ -25,3 +26,8 @@ docker run -it --rm mysql:5.7.22 sh -c "exec mysql -h $DOCKER_HOST_IP -P $MYSQL_
 
 You can also use a GUI to have an history, table names, multi-lines edition, etc. 
 
+## Run the tests for the exercises
+
+```
+docker-compose run php vendor/bin/behat -v
+```
