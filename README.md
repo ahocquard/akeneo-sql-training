@@ -1,5 +1,7 @@
 # SQL training
 
+Presentation keynote done by Grégoire Hubert.
+
 ## Installation
 
 Start the containers:
@@ -24,10 +26,11 @@ If you don't have the Mysql client because you execute everything with docker:
 docker run -it --rm mysql:5.7.22 sh -c "exec mysql -h $DOCKER_HOST_IP -P $MYSQL_EXPOSED_PORT -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE"
 ```
 
-You can also use a GUI to have an history, table names, multi-lines edition, etc. 
+You can also use a GUI to have an history, table names, multi-lines edition, etc.
 
 ## Run the tests for the exercises
 
 ```
 docker-compose run php vendor/bin/behat -v
+
 ```
