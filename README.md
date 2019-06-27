@@ -1,6 +1,6 @@
 # SQL training
 
-Presentation keynote done by Grégoire Hubert.
+Presentation keynote done by Grégoire Hubert :)
 
 ## Installation
 
