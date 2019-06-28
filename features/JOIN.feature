@@ -6,7 +6,7 @@ Feature: Join
     Given I fetch the results with the following query:
     """
     SELECT identifier
-    FROM akeneo_pim.pim_catalog_product p
+    FROM pim_catalog_product p
     JOIN pim_catalog_family f ON f.id = p.family_id
     WHERE product_model_id IS NULL
     AND f.code = 'accessories'

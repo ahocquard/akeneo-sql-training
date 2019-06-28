@@ -15,9 +15,9 @@ Feature: Aggregation
     ORDER BY family_code
     """
     Then the tuples should be:
-    | f.code      |
-    | headphones  |
+    | family_code |
     | mugs        |
     | tablets     |
     | tshirts     |
     | accessories |
+    | headphones  |

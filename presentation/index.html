@@ -417,6 +417,47 @@ $>   a % 2 = 0
 2 rows in set (0.00 sec)
             </code></pre>
           </section>
+        <section>
+            <h2>Filtering rows<br /><small>criterias</small></h2>
+            <pre><code class="sql" data-line-numbers="5-6,15" data-trim data-noescape>
+$> select
+$>   a as col1,
+$>   b as col2
+$> from table_a
+$>   left outer join table_b
+$>     on table_a.a = table_b.b AND b < 5
+$> where
+$>   a % 2 = 0
++------+------+
+| col1 | col2 |
++------+------+
+|    4 |    4 |
+|    2 | NULL |
++------+------+
+2 rows in set (0.00 sec)
+        </code></pre>
+        </section>
+            <section>
+                <h2>Filtering rows<br /><small>criterias</small></h2>
+                <pre><code class="sql" data-line-numbers="9,15" data-trim data-noescape>
+$> select
+$>   a as col1,
+$>   b as col2
+$> from table_a
+$>   left outer join table_b
+$>     on table_a.a = table_b.b
+$> where
+$>   a % 2 = 0
+$>   AND b < 5
+
++------+------+
+| col1 | col2 |
++------+------+
+|    4 |    4 |
++------+------+
+2 rows in set (0.00 sec)
+        </code></pre>
+            </section>
           <section>
             <h2>Filtering rows<br /><small>selection</small></h2>
             <pre><code class="sql" data-line-numbers="3-4,12" data-trim data-noescape>
