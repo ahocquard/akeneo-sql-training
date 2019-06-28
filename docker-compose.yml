@@ -12,7 +12,6 @@ services:
         user: docker
         volumes:
             - ./:/home/docker/
-            - ~/.composer:/home/docker/.composer
         working_dir: /home/docker/
 
     mysql:
