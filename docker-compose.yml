@@ -15,7 +15,8 @@ services:
         working_dir: /home/docker/
 
     mysql:
-        image: 'akeneo-training-sql/mysql:5.7'
+        image: 'akeneo-training-sql/mysql:8.0.16'
+        command: '--default-authentication-plugin=mysql_native_password'
         build:
             context: docker/mysql
         environment:

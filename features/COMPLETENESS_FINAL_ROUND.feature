@@ -56,6 +56,7 @@ Feature: POC Completeness calculation in SQL
         ) as e
     ) as completeness
     GROUP BY id, channel_id, locale_id
+    ORDER BY id, channel_id, locale_id
     LIMIT 5
 ;
 
