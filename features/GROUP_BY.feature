@@ -16,8 +16,8 @@ Feature: Aggregation
     """
     Then the tuples should be:
     | family_code |
+    | accessories |
+    | headphones  |
     | mugs        |
     | tablets     |
     | tshirts     |
-    | accessories |
-    | headphones  |
