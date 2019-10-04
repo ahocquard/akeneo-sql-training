@@ -5,12 +5,7 @@ Feature: Join
 
     Given I fetch the results with the following query:
     """
-    SELECT identifier
-    FROM pim_catalog_product p
-    JOIN pim_catalog_family f ON f.id = p.family_id
-    WHERE product_model_id IS NULL
-    AND f.code = 'accessories'
-    ORDER BY identifier
+
     """
     Then the tuples should be:
     | identifier |
@@ -25,11 +20,7 @@ Feature: Join
 
     Given I fetch the results with the following query:
     """
-    SELECT f.code as family_code
-    FROM pim_catalog_family f
-    LEFT JOIN pim_catalog_product p ON p.family_id = f.id
-    WHERE p.family_id IS NULL
-    ORDER BY f.code
+
     """
     Then the tuples should be:
       | family_code |
@@ -43,12 +34,7 @@ Feature: Join
 
     Given I fetch the results with the following query:
     """
-    SELECT
-        c.code as channel_code,
-        l.code as locale_code
-    FROM pim_catalog_channel c CROSS JOIN pim_catalog_locale l
-    WHERE l.is_activated = 1
-    ORDER BY c.code, l.code
+
     """
     Then the tuples should be:
       | channel_code | locale_code |
@@ -67,13 +53,7 @@ Feature: Join
   Be careful, a product model can have a parent also.
     Given I fetch the results with the following query:
     """
-    SELECT DISTINCT COALESCE(pm2.code, pm1.code) as root_product_model_code
-    FROM pim_catalog_product p
-    JOIN pim_catalog_family f ON f.id = p.family_id
-    JOIN pim_catalog_product_model pm1 ON pm1.id = p.product_model_id
-    LEFT JOIN pim_catalog_product_model pm2 ON pm2.id = pm1.parent_id
-    WHERE f.code = 'accessories'
-    ORDER BY COALESCE(pm2.code, pm1.code)
+
     """
     Then the tuples should be:
       | root_product_model_code |
