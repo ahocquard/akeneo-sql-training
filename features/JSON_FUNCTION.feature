@@ -8,28 +8,7 @@ Feature: JSON function (included aggregation)
 
     Given I fetch the results with the following query:
     """
-       SELECT
-            f.code as family_code,
-            a_label.code as attribute_as_label_code,
-            a_image.code as attribute_as_image_code,
-            attributes.attributes as attribute_codes,
-            JSON_ARRAYAGG(JSON_OBJECT('locale', ft.locale, 'label', ft.label)) as translations
-        FROM pim_catalog_family f
-        LEFT JOIN pim_catalog_attribute a_label on a_label.id = f.label_attribute_id
-        LEFT JOIN pim_catalog_attribute a_image on a_image.id = f.image_attribute_id
-        LEFT JOIN pim_catalog_family_translation ft on ft.foreign_key = f.id
-        LEFT JOIN (
-            SELECT
-                f.id as family_attribute_id,
-                JSON_ARRAYAGG(a.code) as attributes
-            FROM pim_catalog_family f
-            JOIN pim_catalog_family_attribute fa on fa.family_id = f.id
-            JOIN pim_catalog_attribute a on a.id = fa.attribute_id
-            GROUP BY f.code
-            ORDER by f.code
-        ) as attributes on attributes.family_attribute_id = f.id
-        WHERE f.code IN ('accessories')
-        GROUP BY f.code, a_label.code, a_image.code;
+
     """
     Then the tuples should be:
       | family_code | attribute_as_label_code | attribute_as_image_code | attribute_codes | translations |
@@ -41,16 +20,7 @@ Feature: JSON function (included aggregation)
 
     Given I fetch the results with the following query:
     """
-        SELECT
-            p.identifier,
-            JSON_MERGE(COALESCE(pm1.raw_values, '{}'), COALESCE(pm2.raw_values, '{}'), p.raw_values) as raw_values
-        FROM
-            pim_catalog_product p
-            LEFT JOIN pim_catalog_product_model pm1 ON pm1.id = p.product_model_id
-            LEFT JOIN pim_catalog_product_model pm2 on pm2.id = pm1.parent_id
-            LEFT JOIN pim_catalog_family f ON f.id = p.family_id
-        WHERE  p.identifier IN ('1111111158', 'tvsam32')
-        ORDER BY p.identifier;
+
     """
         Then the tuples should be:
             | identifier | raw_values |
